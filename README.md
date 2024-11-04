@@ -1,4 +1,8 @@
-# algo-ts
+# Algorithms in TypeScript
+
+bsed on leetcode, hackerank, etc
+
+## algo-ts
 
 To install dependencies:
 
