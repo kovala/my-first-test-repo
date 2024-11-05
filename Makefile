@@ -27,7 +27,9 @@ br:
 bd:
 	export CMAKE_BUILD_PARALLEL_LEVEL=10 && ${cm} --build cmake-build-debug -j 10
 rd:
-	./cmake-build-debug/algo-xp --arrays
+	./cmake-build-debug/algo-xp --arrays-benchmark
+rr:
+	./cmake-build-debug/algo-xp --arrays-benchmark
 c:
 	rm -rf cmake-build-debug/*
 	rm -rf cmake-build-release/*

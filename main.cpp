@@ -46,7 +46,7 @@ std::map<std::string, std::function<void()>> m = {
   }},
   {"arrays-benchmark", [] {
     mitata::runner runner;
-    runner.bench("fibonacci", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
+    runner.bench("binarySearch", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
     // runner.summary([&]() {
     //   runner.bench("empty fn", []() { });
     //   runner.bench("fibonacci", []() { fibonacci(20); });
