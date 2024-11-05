@@ -29,10 +29,16 @@ bd:
 rd:
 	./cmake-build-debug/algo-xp --arrays-benchmark
 rr:
-	./cmake-build-debug/algo-xp --arrays-benchmark
-c:
+	./cmake-build-release/algo-xp --arrays-benchmark
+clean:
 	rm -rf cmake-build-debug/*
 	rm -rf cmake-build-release/*
+
+
+cmp-binary-search:
+	./cmake-build-release/algo-xp --arrays-benchmark
+	b=1 bun test ./arrays/binary-search.ts
+
 
 
 git-acp:
