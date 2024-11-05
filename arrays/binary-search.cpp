@@ -1,0 +1,7 @@
+namespace arrays {
+
+void binarySearch(){
+
+}
+
+}
