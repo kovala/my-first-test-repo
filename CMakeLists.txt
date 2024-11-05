@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.28)
 project(algo-xp)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 set_target_properties(${TARGET}
   PROPERTIES
-  CXX_STANDARD 20
+  CXX_STANDARD 23
   CXX_STANDARD_REQUIRED ON
 )
 

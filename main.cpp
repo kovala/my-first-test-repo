@@ -6,9 +6,6 @@
 #include <util.h>
 #include <algo.h>
 
-const std::string port1 = "8811";
-const std::string port2 = "8812";
-
 void testJson(const std::vector<int>& v) {
   json j = {
     {"happy", 1},
@@ -39,7 +36,8 @@ std::map<std::string, std::function<void()>> m = {
     testSort();
   }},
   {"arrays", [] {
-
+    auto result = arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3);
+    u::jlog({{"result", result}});
   }},
 //  {"lits", [] {
 //    Lits::initializerList();
@@ -47,52 +45,22 @@ std::map<std::string, std::function<void()>> m = {
 //    Lits::routines();
 //  }},
 //  {"fmt", [] { Lits::println(); }},
-//  {"niit", [] {
-//    Niit::packagedTask();
-//    Niit::once();
-//    Niit::simple();
-//    Niit::threadLocal();
-//    Niit::atomic();
-//    Niit::spinLock();
-//    Niit::featureSimple();
-//    Niit::featureCplex();
-//    Niit::mutex();
-//    Niit::sharedTimedMutex();
-//    Niit::locks();
-//    Niit::semaphore();
-//    Niit::stopSource();
-//    Niit::stopSourceAuto();
-//    Niit::latch();
-//    Niit::barrier();
-//  }},
 //  {"sp", [] {
 //    Vigur::variaDick();
 //    Vigur::customDeleters();
 //    Vigur::advanceSharedPointers();
 //    Vigur::sharedPointers();
 //  }},
-//  {"noob", [] {
-//    Noob::moveIt();
-//    Noob::checkInit();
-//    Noob::basicStruct();
-//    Noob::loopMaps();
-//    Noob::mapsAndSets();
-//    Noob::knowAlgos();
-//    Noob::range();
-//    Noob::nameSpace();
-//  }}
 };
 
 int main(int n, const char* args[]) {
-//  argh::parser cli(args);
-//  u::jlog({"flags", cli.flags()});
-//
-//  std::cout << "hello!" << std::endl;
-//
-//  for (auto& f: cli.flags()) {
-//    if (m.contains(f)) {
-//      m[f]();
-//    }
-//  }
+  argh::parser cli(args);
+  u::jlog({"flags", cli.flags()});
+
+  for (auto& f: cli.flags()) {
+    if (m.contains(f)) {
+      m[f]();
+    }
+  }
   return 0;
 }

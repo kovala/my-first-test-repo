@@ -17,34 +17,26 @@ cmd:
 cmd2:
 	${cm} -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake \
 	-DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=${ninja} -G Ninja -S . \
-	-B cmake-build-debug 
+	-B cmake-build-debug
 
 
 br:
 	${cm} --build cmake-build-release --target pyss -j 22
-bd: 
+bd:
 	export CMAKE_BUILD_PARALLEL_LEVEL=10 && ${cm} --build cmake-build-debug -j 10
 rd:
-	./cmake-build-debug/pauk/pauk --lits --niit
+	./cmake-build-debug/algo-xp --arrays
 c:
-	rm -rf cmake-build-debug/*	
+	rm -rf cmake-build-debug/*
 	rm -rf cmake-build-release/*
 
 
 git-acp:
-	cd mod/juce && git acp || true
+	#cd mod/juce && git acp || true
 	git acp || true
 git-pull:
-	cd mod/juce && git pull || true
+	#cd mod/juce && git pull || true
 	git pull || true
 git-push:
-	cd mod/juce && git push || true
+	#cd mod/juce && git push || true
 	git push || true
-
-
-vst-rel:
-	rm -rf ~/.vst3/magnetar.vst3
-	cp -r cmake-build-debug/magnetar/magnetar_artefacts/Debug/VST3/magnetar.vst3 ~/.vst3/
- 
- 
-
