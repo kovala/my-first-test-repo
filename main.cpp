@@ -2,6 +2,9 @@
 #include <iostream>
 #include <vector>
 #include <argh.h>
+#include <chrono>
+#include <cmath>
+#include <mitata.hpp>
 
 #include <util.h>
 #include <algo.h>
@@ -25,6 +28,8 @@ void testSort() {
   u::jlog({"arr", a});
 }
 
+
+
 std::map<std::string, std::function<void()>> m = {
   {"stdarr", [] {
     std::array sarr = {5, 6, 56, 456, 456, 546, 456};
@@ -39,11 +44,15 @@ std::map<std::string, std::function<void()>> m = {
     auto result = arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3);
     u::jlog({{"result", result}});
   }},
-//  {"lits", [] {
-//    Lits::initializerList();
-//    Lits::randomArr();
-//    Lits::routines();
-//  }},
+  {"arrays-benchmark", [] {
+    mitata::runner runner;
+    runner.bench("fibonacci", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
+    // runner.summary([&]() {
+    //   runner.bench("empty fn", []() { });
+    //   runner.bench("fibonacci", []() { fibonacci(20); });
+    // });
+    auto stats = runner.run();
+  }},
 //  {"fmt", [] { Lits::println(); }},
 //  {"sp", [] {
 //    Vigur::variaDick();

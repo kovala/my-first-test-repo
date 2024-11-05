@@ -8,6 +8,8 @@ mod-add:
 	git submodule add git@github.com:sergeyleschev/leetcode-typescript mod/sergeyleschev-leetcode-typescript
 	git submodule add https://github.com/LeetCode-in-TypeScript/LeetCode-in-TypeScript mod/leetcode-in-typescript
 	git submodule add git@github.com:axross/leetcode-typescript.git mod/axross-leetcode-in-typescript
+	git submodule add git@github.com:evanwashere/mitata.git mod/mitata
+
 
 
 cmr:

@@ -10,3 +10,6 @@
 [submodule "mod/axross-leetcode-in-typescript"]
 	path = mod/axross-leetcode-in-typescript
 	url = git@github.com:axross/leetcode-typescript.git
+[submodule "mod/mitata"]
+	path = mod/mitata
+	url = git@github.com:evanwashere/mitata.git
