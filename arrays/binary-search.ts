@@ -1,23 +1,29 @@
 import {test, expect} from "bun:test";
+import {bench, run} from "mitata";
 
 const binarySearch = (sortedArr: number[], target: number) => {
-  let left = 0
-  let right = sortedArr.length - 1
-
-  for (; left <= right;) {
-    let mid = Math.floor((left + right) / 2)
+  for (let left = 0, right = sortedArr.length - 1; left <= right;) {
+    const mid = Math.floor((left + right) / 2)
 
     if (sortedArr[mid] == target) {
       return mid
     } else if (sortedArr[mid] < target) {
-      right = mid + 1
+      left = mid + 1
     } else {
-      left = mid - 1
+      right = mid - 1
     }
   }
+  return -1
 }
 
 test("binary search", () => {
   const result = binarySearch([1, 2, 3, 4, 5, 6, 7], 3)
   expect(result).toBe(2)
+})
+
+test("binary search benchmark", async () => {
+  if (Bun.env['b'] == '1') {
+    bench('binarySearch', () => binarySearch([1, 2, 3, 4, 5, 6, 7], 3));
+    await run()
+  }
 })

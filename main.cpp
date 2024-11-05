@@ -4,6 +4,7 @@
 #include <argh.h>
 
 #include <util.h>
+#include <algo.h>
 
 const std::string port1 = "8811";
 const std::string port2 = "8812";
@@ -37,9 +38,9 @@ std::map<std::string, std::function<void()>> m = {
     testMe({100, 333, 666});
     testSort();
   }},
-//  {"json", [] {
-//    testJson({4, 5, 6});
-//  }},
+  {"arrays", [] {
+
+  }},
 //  {"lits", [] {
 //    Lits::initializerList();
 //    Lits::randomArr();
