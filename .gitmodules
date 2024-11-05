@@ -1,0 +1,12 @@
+[submodule "mod/eddyhdzg-leetcode-typescript-solutions"]
+	path = mod/eddyhdzg-leetcode-typescript-solutions
+	url = git@github.com:eddyhdzg/leetcode-typescript-solutions
+[submodule "mod/sergeyleschev-leetcode-typescript"]
+	path = mod/sergeyleschev-leetcode-typescript
+	url = git@github.com:sergeyleschev/leetcode-typescript
+[submodule "mod/leetcode-in-typescript"]
+	path = mod/leetcode-in-typescript
+	url = https://github.com/LeetCode-in-TypeScript/LeetCode-in-TypeScript
+[submodule "mod/axross-leetcode-in-typescript"]
+	path = mod/axross-leetcode-in-typescript
+	url = git@github.com:axross/leetcode-typescript.git
