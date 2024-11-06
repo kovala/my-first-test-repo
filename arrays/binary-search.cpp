@@ -3,7 +3,7 @@
 namespace arrays {
   int binarySearch(const std::vector<int>& sortedArr, int target) {
     for (int left = 0, right = sortedArr.size() - 1; left <= right;) {
-      auto mid = (left + right)/2;
+      auto mid = (left + right) / 2;
 
       if (sortedArr[mid] == target) {
         return mid;

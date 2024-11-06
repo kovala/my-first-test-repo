@@ -62,7 +62,7 @@ std::map<std::string, std::function<void()>> m = {
     int big = 1'000'000;
     auto vec = rndVec(big, 1, big);
     std::ranges::sort(vec);
-    fmt::println("arr: {}",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+    fmt::println("arr: {}",  std::vector(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
 
     gFn = [&] { arrays::twoSum(vec, big); };
 
