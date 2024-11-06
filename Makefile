@@ -13,7 +13,7 @@ mod-add:
 
 
 cmr:
-	${cm} -S . -B cmake-build-release
+	${cm} -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake -DCMAKE_BUILD_TYPE=Release -S . -B cmake-build-release
 cmd:
 	${cm} -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug -S . -B cmake-build-debug
 cmd2:
@@ -23,7 +23,7 @@ cmd2:
 
 
 br:
-	${cm} --build cmake-build-release --target pyss -j 22
+	${cm} --build cmake-build-release --target algo-xp -j 22
 bd:
 	export CMAKE_BUILD_PARALLEL_LEVEL=10 && ${cm} --build cmake-build-debug -j 10
 rd:
