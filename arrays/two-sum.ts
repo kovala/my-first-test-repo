@@ -102,21 +102,22 @@ test("two sum 2 linear", () => {
 
 
 test("two sum benchmark", async () => {
-  const big = 1000_000
+  const big = 100_000
   const genRandom = (length: number, min: number = 0, max: number = 1): number[] => Array.from({length}, () => Math.random() * (max - min) + min);
   const bigArr = genRandom(big, 1, big);
 
 
   if (Bun.env['b'] == '1') {
-    // bench('twoSumWithMap', () => twoSumWithMap([1, 2, 3, 4, 5, 6, 7], 3));
-    // bench('twoSum', () => twoSum([1, 2, 3, 4, 5, 6, 7], 3));
-    //
-    // bench('twoSumFullyRecursive', () => twoSumFullyRecursive([1, 2, 3, 4, 5, 6, 7], 3));
-    // bench('twoSumRecursiveCached', () => twoSumRecursiveCached([1, 2, 3, 4, 5, 6, 7], 3));
-    // bench('twoSumRecursiveCachedWithMap', () => twoSumRecursiveCachedWithMap([1, 2, 3, 4, 5, 6, 7], 3));
+    bench('twoSumWithMap', () => twoSumWithMap([1, 2, 3, 4, 5, 6, 7], 3));
+    bench('twoSum', () => twoSum([1, 2, 3, 4, 5, 6, 7], 3));
+
+    bench('twoSumFullyRecursive', () => twoSumFullyRecursive([1, 2, 3, 4, 5, 6, 7], 3));
+    bench('twoSumRecursiveCached', () => twoSumRecursiveCached([1, 2, 3, 4, 5, 6, 7], 3));
+    bench('twoSumRecursiveCachedWithMap', () => twoSumRecursiveCachedWithMap([1, 2, 3, 4, 5, 6, 7], 3));
+
 
     bench('twoSum big', () => twoSum(bigArr, big));
-    bench('twoSumFullyRecursive big', () => twoSumFullyRecursive(bigArr, big));
+    bench('twoSumWithMap big', () => twoSumWithMap(bigArr, big));
 
     await run()
   }
