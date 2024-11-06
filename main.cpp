@@ -4,6 +4,8 @@
 #include <argh.h>
 #include <chrono>
 #include <mitata.hpp>
+#include <fmt/color.h>
+#include <fmt/ranges.h>
 
 #include <util.h>
 #include <algo.h>
@@ -60,6 +62,8 @@ std::map<std::string, std::function<void()>> m = {
     int big = 1'000'000;
     auto vec = rndVec(big, 1, big);
     std::ranges::sort(vec);
+    fmt::println("arr: {}",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+
     gFn = [&] { arrays::twoSum(vec, big); };
 
     runner.summary([&] {
@@ -73,6 +77,8 @@ std::map<std::string, std::function<void()>> m = {
 
     int big = 1'000'000;
     auto vec = rndVec(big, 1, big);
+    fmt::println("arr: {}",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+
     gFn = [&] { arrays::twoSum(vec, big); };
 
     runner.summary([&] {
