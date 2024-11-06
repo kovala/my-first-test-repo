@@ -1,8 +1,15 @@
 # Algorithms in TypeScript
 
-bsed on leetcode, hackerank, etc
+<!-- TOC -->
+* [Algorithms in TypeScript](#algorithms-in-typescript)
+  * [algo-ts](#algo-ts)
+  * [Benchmarks](#benchmarks)
+    * [Bun vs GCC Compiled `cpp` :joy:](#bun-vs-gcc-compiled-cpp-joy-)
+<!-- TOC -->
 
-## algo-ts
+Based on leetcode, hackerank, etc
+
+## About
 
 To install dependencies:
 
@@ -17,3 +24,7 @@ bun run index.ts
 ```
 
 This project was created using `bun init` in bun v1.1.34. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+
+## Benchmarks
+### Bun vs GCC Compiled `cpp` :joy: 
+![](docs/bun-vs-cpp-binary-search.png)

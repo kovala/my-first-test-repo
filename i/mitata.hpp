@@ -9,6 +9,7 @@
 #include <numeric>
 #include <iostream>
 #include <algorithm>
+#include <cmath>
 
 namespace mitata {
   typedef float f32; typedef double f64;

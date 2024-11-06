@@ -3,7 +3,6 @@
 #include <vector>
 #include <argh.h>
 #include <chrono>
-#include <cmath>
 #include <mitata.hpp>
 
 #include <util.h>
@@ -14,7 +13,6 @@ void testJson(const std::vector<int>& v) {
     {"happy", 1},
     {"vecy", v},
   };
-
   std::cout << j << std::endl;
 }
 void testMe(const std::vector<int>& v) {
@@ -27,8 +25,6 @@ void testSort() {
   std::ranges::sort(a);
   u::jlog({"arr", a});
 }
-
-
 
 std::map<std::string, std::function<void()>> m = {
   {"stdarr", [] {
@@ -46,8 +42,6 @@ std::map<std::string, std::function<void()>> m = {
   }},
   {"arrays-benchmark", [] {
     mitata::runner runner;
-
-
     runner.summary([&]() {
       runner.bench("empty fn", []() { });
       runner.bench("binarySearch", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
