@@ -7,12 +7,12 @@ namespace arrays {
 
     for (int i = 0; i < arr.size(); i++) {
       int k = target - arr[i];
-
       if (map.find(k) != map.end()) {
         // If it does, return the indices
         return {map[k], i};
       }
       map[arr[i]] = i;
     }
+    return {};
   }
 }

@@ -7,6 +7,7 @@
 
 #include <util.h>
 #include <algo.h>
+#include <random>
 
 void testJson(const std::vector<int>& v) {
   json j = {
@@ -26,6 +27,20 @@ void testSort() {
   u::jlog({"arr", a});
 }
 
+std::vector<int> rndVec(size_t size, int min, int max) {
+  std::mt19937 gen(std::random_device{}());
+  // distribution range
+  std::uniform_int_distribution<int> dist(min, max);
+  std::vector<int> result(size);
+  std::generate(result.begin(), result.end(), [&]() { return dist(gen);  });
+  return result;
+}
+
+std::function<void()> gFn;
+void helperFn() {
+  if (gFn) gFn();
+}
+
 std::map<std::string, std::function<void()>> m = {
   {"stdarr", [] {
     std::array sarr = {5, 6, 56, 456, 456, 546, 456};
@@ -42,19 +57,23 @@ std::map<std::string, std::function<void()>> m = {
   }},
   {"arrays-benchmark", [] {
     mitata::runner runner;
-    runner.summary([&]() {
-      runner.bench("empty fn", []() { });
+    runner.summary([&] {
+      runner.bench("empty fn", [] { });
       runner.bench("binarySearch", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
     });
     auto stats = runner.run();
   }},
-//  {"fmt", [] { Lits::println(); }},
-//  {"sp", [] {
-//    Vigur::variaDick();
-//    Vigur::customDeleters();
-//    Vigur::advanceSharedPointers();
-//    Vigur::sharedPointers();
-//  }},
+  {"twosum-benchmark", [] {
+    mitata::runner runner;
+    int big = 1'000'000;
+    auto v = rndVec(big, 1, big);
+    runner.summary([&] {
+      gFn = [&] { arrays::twoSum(v, big); };
+      std::cout << "v=" << v.size() << std::endl;
+      runner.bench("twoSum", helperFn);
+    });
+    auto stats = runner.run();
+  }},
 };
 
 int main(int n, const char* args[]) {

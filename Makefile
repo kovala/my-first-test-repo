@@ -38,7 +38,9 @@ clean:
 cmp-binary-search:
 	./cmake-build-release/algo-xp --arrays-benchmark
 	b=1 bun test ./arrays/binary-search.ts
-
+cmp-two-sum:
+	./cmake-build-release/algo-xp --twosum-benchmark
+	b=1 bun test ./arrays/two-sum.ts
 
 
 git-acp:
