@@ -1,5 +1,6 @@
 import {test, expect} from "bun:test";
 import {bench, run} from "mitata";
+import {genRandomArray} from "../common/utils.ts";
 
 // Naive recursive approach
 const twoSumFullyRecursive = (arr: number[], target: number) => {
@@ -103,8 +104,7 @@ test("two sum 2 linear", () => {
 
 test("two sum benchmark", async () => {
   const big = 1_000_000
-  const genRandom = (length: number, min: number = 0, max: number = 1): number[] => Array.from({length}, () => Math.random() * (max - min) + min);
-  const bigArr = genRandom(big, 1, big);
+  const bigArr = genRandomArray(big, 1, big);
 
 
   if (Bun.env['b'] == '1') {

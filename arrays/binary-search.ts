@@ -1,5 +1,6 @@
 import {test, expect} from "bun:test";
 import {bench, run} from "mitata";
+import {genRandomArray} from "../common/utils.ts";
 
 const binarySearch = (sortedArr: number[], target: number) => {
   for (let left = 0, right = sortedArr.length - 1; left <= right;) {
@@ -22,8 +23,12 @@ test("binary search", () => {
 })
 
 test("binary search benchmark", async () => {
+  const big = 1_000_000
+  const bigArr = genRandomArray(big, 1, big);
+  const sorted = bigArr.sort((a, b) => a - b)
+
   if (Bun.env['b'] == '1') {
-    bench('binarySearch', () => binarySearch([1, 2, 3, 4, 5, 6, 7], 3));
+    bench('binarySearch', () => binarySearch(sorted, big));
     await run()
   }
 })

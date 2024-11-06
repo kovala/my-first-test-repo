@@ -21,11 +21,6 @@ void testMe(const std::vector<int>& v) {
     std::cout << "v" << a << std::endl;
   }
 }
-void testSort() {
-  std::array<int, 3> a = {2, 1, 3};
-  std::ranges::sort(a);
-  u::jlog({"arr", a});
-}
 
 std::vector<int> rndVec(size_t size, int min, int max) {
   std::mt19937 gen(std::random_device{}());
@@ -35,7 +30,11 @@ std::vector<int> rndVec(size_t size, int min, int max) {
   std::generate(result.begin(), result.end(), [&]() { return dist(gen);  });
   return result;
 }
-
+void testSort() {
+  std::array<int, 3> a = {2, 1, 3};
+  std::ranges::sort(a);
+  u::jlog({"arr", a});
+}
 std::function<void()> gFn;
 void helperFn() {
   if (gFn) gFn();
@@ -57,19 +56,26 @@ std::map<std::string, std::function<void()>> m = {
   }},
   {"arrays-benchmark", [] {
     mitata::runner runner;
+
+    int big = 1'000'000;
+    auto vec = rndVec(big, 1, big);
+    std::ranges::sort(vec);
+    gFn = [&] { arrays::twoSum(vec, big); };
+
     runner.summary([&] {
       runner.bench("empty fn", [] { });
-      runner.bench("binarySearch", [] { arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3); });
+      runner.bench("binarySearch", helperFn);
     });
     auto stats = runner.run();
   }},
   {"twosum-benchmark", [] {
     mitata::runner runner;
+
     int big = 1'000'000;
-    auto v = rndVec(big, 1, big);
+    auto vec = rndVec(big, 1, big);
+    gFn = [&] { arrays::twoSum(vec, big); };
+
     runner.summary([&] {
-      gFn = [&] { arrays::twoSum(v, big); };
-      std::cout << "v=" << v.size() << std::endl;
       runner.bench("twoSum", helperFn);
     });
     auto stats = runner.run();
