@@ -2,22 +2,19 @@ cmake_minimum_required(VERSION 3.28)
 project(algo-xp)
 
 set(CMAKE_CXX_STANDARD 23)
-
 set_target_properties(${TARGET}
   PROPERTIES
   CXX_STANDARD 23
   CXX_STANDARD_REQUIRED ON
 )
+#set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 find_package(nlohmann_json)
 find_package(argh)
 find_package(fmt)
 
-#if(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
-#  message(STATUS "Compiling on macOS")
-#else()
-#  add_subdirectory(pauk)
-#endif()
 
 file(GLOB_RECURSE SOURCES
   main.cpp
