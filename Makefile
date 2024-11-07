@@ -3,13 +3,6 @@ ninja:=/home/azz/tools/clion/bin/ninja/linux/x64/ninja
 
 deps:
 	ls -la
-mod-add:
-	git submodule add git@github.com:eddyhdzg/leetcode-typescript-solutions mod/eddyhdzg-leetcode-typescript-solutions
-	git submodule add git@github.com:sergeyleschev/leetcode-typescript mod/sergeyleschev-leetcode-typescript
-	git submodule add https://github.com/LeetCode-in-TypeScript/LeetCode-in-TypeScript mod/leetcode-in-typescript
-	git submodule add git@github.com:axross/leetcode-typescript.git mod/axross-leetcode-in-typescript
-	git submodule add git@github.com:evanwashere/mitata.git mod/mitata
-
 
 
 cmr:
@@ -42,7 +35,15 @@ cmp-two-sum:
 	./cmake-build-release/algo-xp --twosum-benchmark
 	b=1 bun test ./arrays/two-sum.ts
 
-
+git-mod-add:
+	git submodule add git@github.com:eddyhdzg/leetcode-typescript-solutions mod/eddyhdzg-leetcode-typescript-solutions
+	git submodule add git@github.com:sergeyleschev/leetcode-typescript mod/sergeyleschev-leetcode-typescript
+	git submodule add https://github.com/LeetCode-in-TypeScript/LeetCode-in-TypeScript mod/leetcode-in-typescript
+	git submodule add git@github.com:axross/leetcode-typescript.git mod/axross-leetcode-in-typescript
+	git submodule add git@github.com:evanwashere/mitata.git mod/mitata
+git-mod-init:
+	git submodule init
+	git submodule update --init
 git-acp:
 	#cd mod/juce && git acp || true
 	git acp || true
