@@ -1,4 +1,4 @@
-# Algorithms in TypeScript
+# Algorithms in `typescript` vs `c++`
 
 <!-- TOC -->
 * [Algorithms in TypeScript](#algorithms-in-typescript)
@@ -12,6 +12,11 @@ Based on leetcode, hackerank, etc
 ## About
 
 To install dependencies:
+
+```
+curl -fsSL https://bun.sh/install | bash
+```
+
 
 ```bash
 bun install
