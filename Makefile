@@ -2,7 +2,7 @@ cm:=/home/azz/tools/clion/bin/cmake/linux/x64/bin/cmake
 ninja:=/home/azz/tools/clion/bin/ninja/linux/x64/ninja
 
 cmp-binary-search:
-	./cmake-build-release/algo-xp --arrays-benchmark
+	./cmake-build-release/algo-xp --binary-search-benchmark
 	b=1 bun test ./arrays/binary-search.ts
 cmp-two-sum:
 	./cmake-build-release/algo-xp --twosum-benchmark

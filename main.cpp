@@ -56,7 +56,7 @@ std::map<std::string, std::function<void()>> m = {
     auto result = arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3);
     u::jlog({{"result", result}});
   }},
-  {"arrays-benchmark", [] {
+  {"binary-search-benchmark", [] {
     mitata::runner runner;
 
     int big = 1'000'000;
@@ -67,7 +67,7 @@ std::map<std::string, std::function<void()>> m = {
     gFn = [&] { arrays::twoSum(vec, big); };
 
     runner.summary([&] {
-      runner.bench("empty fn", [] { });
+      // runner.bench("empty fn", [] { });
       runner.bench("binarySearch", helperFn);
     });
     auto stats = runner.run();
