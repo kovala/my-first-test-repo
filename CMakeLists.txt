@@ -19,9 +19,10 @@ find_package(fmt)
 file(GLOB_RECURSE SOURCES
   main.cpp
   i/
-  "arrays/*.cpp"
-  "dp/**/*.cpp"
-  "trees/**/*.cpp"
+  common/*.cpp
+  arrays/*.cpp
+  dp/**/*.cpp
+  trees/**/*.cpp
 )
 add_executable(${PROJECT_NAME} ${SOURCES})
 
