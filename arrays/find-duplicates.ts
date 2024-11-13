@@ -12,7 +12,7 @@ const findDuplicatesNaive = (arr: number[]) => {
 
   return result;
 }
-test("case 1", () => {
+test("findDuplicatesNaive", () => {
   const arr =  [4,3,2,7,8,2,3,1]
   const r = findDuplicatesNaive(arr)
   expect(r).toEqual([2,3])
