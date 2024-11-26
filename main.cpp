@@ -85,6 +85,20 @@ std::map<std::string, std::function<void()>> m = {
     });
     auto stats = runner.run();
   }},
+  {"has-duplicate-benchmark", [] {
+    mitata::runner runner;
+
+    int big = 1'000'000;
+    auto vec = rndVec(big, 1, big);
+    fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+
+    gFn = [&] { arrays::hasDuplicateOptimal(vec); };
+
+    runner.summary([&] {
+      runner.bench("has-duplicate", helperFn);
+    });
+    auto stats = runner.run();
+  }},
 };
 
 int main(int n, const char* args[]) {
