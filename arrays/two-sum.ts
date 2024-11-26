@@ -65,6 +65,19 @@ const twoSumRecursiveCachedWithMap = (arr: number[], target: number) => {
 }
 
 // linear
+const twoSumTwoPass = (nums, target) => {
+  const indices = {};
+  for (let i = 0; i < nums.length; i++) {
+    indices[nums[i]] = i;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    let diff = target - nums[i];
+    if (indices[diff] !== undefined && indices[diff] !== i) {
+      return [i, indices[diff]];
+    }
+  }
+  return [];
+};
 const twoSumWithMap = (arr: number[], target: number): number[] => {
   const map = new Map<number, number>();
   for (let i = 0; i < arr.length; i++) {
@@ -108,18 +121,14 @@ test("two sum benchmark", async () => {
   const big = 1_000_000
   const bigArr = genRandomArray(big, 1, big);
 
-
   if (Bun.env['b'] == '1') {
-    const arr = [1, 7, 2, 6, 7, 3, 4, 5, 6]
-    const sum = 13
-
-    // bench('twoSumWithMap', () => twoSumWithMap(arr, sum));
-    // bench('twoSum', () => twoSum(arr, sum));
-    //
+    // const arr = [1, 7, 2, 6, 7, 3, 4, 5, 6]
+    // const sum = 13
     // bench('twoSumFullyRecursive', () => twoSumFullyRecursive(arr, sum));
     // bench('twoSumRecursiveCached', () => twoSumRecursiveCached(arr, sum));
     // bench('twoSumRecursiveCachedWithMap', () => twoSumRecursiveCachedWithMap(arr, sum));
 
+    bench('twoSumTwoPass big', () => twoSumTwoPass(bigArr, big));
     bench('twoSum big', () => twoSum(bigArr, big));
     bench('twoSumWithMap big', () => twoSumWithMap(bigArr, big));
 

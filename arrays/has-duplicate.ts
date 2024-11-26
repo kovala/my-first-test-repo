@@ -15,6 +15,8 @@ const hasDuplicateWithHashSet = (nums: number[]) => {
 };
 
 // just comparing set sizes
+// Time complexity: O(n)
+// Space complexity: O(n)
 const hasDuplicateOptimal = (nums: number[]) => new Set(nums).size < nums.length
 
 test("has duplicates naive", () => {
