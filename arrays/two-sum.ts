@@ -117,7 +117,7 @@ test("two sum 2 linear", () => {
 })
 
 
-test("two sum benchmark", async () => {
+test("benchmark: two sum", async () => {
   const big = 1_000_000
   const bigArr = genRandomArray(big, 1, big);
 
