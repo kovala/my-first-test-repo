@@ -7,7 +7,7 @@ cmp-binary-search:
 cmp-two-sum:
 	./cmake-build-release/algo-xp --twosum-benchmark
 	b=1 bun test ./arrays/two-sum.ts
-cmp-has-duplicates:
+cmp-has-duplicate:
 	./cmake-build-release/algo-xp --has-duplicate-benchmark
 	b=1 bun test ./arrays/has-duplicate.ts
 

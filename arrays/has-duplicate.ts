@@ -32,8 +32,8 @@ test("benchmark: has duplicates", async () => {
   const bigArr = genRandomArray(big, 1, big);
 
   if (Bun.env['b'] == '1') {
-    bench('twoSum big', () => hasDuplicateWithHashSet(bigArr));
-    bench('twoSumWithMap big', () => hasDuplicateOptimal(bigArr));
+    bench('hasDuplicateWithHashSet', () => hasDuplicateWithHashSet(bigArr));
+    bench('hasDuplicateOptimal', () => hasDuplicateOptimal(bigArr));
 
     await run()
   }
