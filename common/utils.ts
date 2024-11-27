@@ -52,6 +52,14 @@ export class MinHeap {
 export const genRandomArray = (length: number, min: number = 0, max: number = 1): number[] =>
   Array.from({length}, () => Math.random() * (max - min) + min);
 
-export const genRandomIntArray = (length: number, min: number = 0, max: number = 1): number[] =>
-  Array.from({length}, () => Math.floor(Math.random() * (max - min) + min));
+export const rndNum = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
+export const genRandomIntArray = (length: number, min: number = 0, max: number = 1): number[] =>
+  Array.from({length}, () => rndNum(min,  max));
+
+export const genRandomHash = () => (Math.random() + 1).toString(26)
+
+export const genRandomStr = (len, chars='abcdefghijklmnopqrstuvwxyz') => [...Array(len)].map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('')
+
+export const genRandomStrArray = (length: number, min: number = 0, max: number = 1): string[] =>
+  Array.from({length}, () => genRandomStr(rndNum(min,  max)));

@@ -6,10 +6,10 @@
 #include <mitata.hpp>
 #include <fmt/color.h>
 #include <fmt/ranges.h>
-
-#include <util.h>
-#include <algo.h>
 #include <random>
+
+#include <utils.h>
+#include <algo.h>
 
 void testJson(const std::vector<int>& v) {
   json j = {
@@ -24,14 +24,6 @@ void testMe(const std::vector<int>& v) {
   }
 }
 
-std::vector<int> rndVec(size_t size, int min, int max) {
-  std::mt19937 gen(std::random_device{}());
-  // distribution range
-  std::uniform_int_distribution<int> dist(min, max);
-  std::vector<int> result(size);
-  std::generate(result.begin(), result.end(), [&]() { return dist(gen);  });
-  return result;
-}
 void testSort() {
   std::array<int, 3> a = {2, 1, 3};
   std::ranges::sort(a);
@@ -56,11 +48,16 @@ std::map<std::string, std::function<void()>> m = {
     auto result = arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3);
     u::jlog({{"result", result}});
   }},
-  {"binary-search-benchmark", [] {
+  {"group-anagrams", [] {
+    auto result = arrays::groupAnagramsOptimal({"act","pots","tops","cat","stop","hat"});
+    u::jlog({{"result", result}});
+  }},
+
+  {"benchmark:binary-search", [] {
     mitata::runner runner;
 
     int big = 1'000'000;
-    auto vec = rndVec(big, 1, big);
+    auto vec = utils::genRandomIntArray(big, 1, big);
     std::ranges::sort(vec);
     fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
 
@@ -71,17 +68,44 @@ std::map<std::string, std::function<void()>> m = {
     });
     auto stats = runner.run();
   }},
-  {"twosum-benchmark", [] {
+  {"benchmark:twosum", [] {
     mitata::runner runner;
 
     int big = 1'000'000;
-    auto vec = rndVec(big, 1, big);
+    auto vec = utils::genRandomIntArray(big, 1, big);
     fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
 
     gFn = [&] { arrays::twoSum(vec, big); };
 
     runner.summary([&] {
       runner.bench("twoSum", helperFn);
+    });
+    auto stats = runner.run();
+  }},
+  {"benchmark:has-duplicate", [] {
+    mitata::runner runner;
+
+    int big = 1'000'000;
+    auto vec = utils::genRandomIntArray(big, 1, big);
+    fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector<int>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+
+    gFn = [&] { arrays::hasDuplicateOptimal(vec); };
+
+    runner.summary([&] {
+      runner.bench("has-duplicate", helperFn);
+    });
+    auto stats = runner.run();
+  }},
+  {"benchmark:group-anagrams", [] {
+    mitata::runner runner;
+
+    int big = 1'00'000;
+    auto vec = utils::genRandomStrArray(big, 1, 100);
+    fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector(vec.begin(), vec.begin() + std::min(size_t(10), vec.size())));
+
+    gFn = [&] { arrays::groupAnagramsOptimal(vec); };
+    runner.summary([&] {
+      runner.bench("group-anagrams", helperFn);
     });
     auto stats = runner.run();
   }},

@@ -6,7 +6,7 @@
   * [Algos](#algos)
   * [Benchmarks](#benchmarks)
     * [Binary Search](#binary-search)
-      * [Bun vs GCC Compiled `c++` for array length=1_000_000 si:joy:](#bun-vs-gcc-compiled-c-for-array-length1_000_000-sijoy-)
+    * [Group Anagrams](#group-anagrams)
 <!-- TOC -->
 
 ## About
@@ -19,6 +19,8 @@ To install dependencies:
 Bun is a JavaScript runtime, package manager, test runner and bundler built from scratch using the Zig programming language. 
 It was designed by Jarred Sumner as a drop-in replacement for Node. js. 
 Bun uses WebKit's **JavaScriptCore** as the JavaScript engine, unlike Node.
+
+For cpp CMake and conan2 setup is used
 
 ```bash
 curl -fsSL https://bun.sh/install | bash
@@ -49,13 +51,28 @@ bun run index.ts
 
 ## Benchmarks
 
+Bun vs gcc13 compiled cpp code
+
 ### Binary Search
-#### Bun vs GCC Compiled `c++` for array length=1_000_000 si:joy: 
-![](docs/cpp-binary-search.png)
+
+array.length=1000_000
+
+
+<img src="docs/cpp-binary-search.png" width="800"/> 
 
 for sorted array using bun 
 
-![](docs/ts-binary-search.png)
+<img src="docs/ts-binary-search.png" width="800"/>
 
 ---
-![](docs/bun-vs-cpp-binary-search.png)
+
+<img src="docs/bun-vs-cpp-binary-search.png" width="800"/>
+
+### Group Anagrams
+
+arrat.length=100_000
+
+- cpp: 48 ms
+- bun: 82 ms
+
+<img src="docs/group-anagrams.png" width="800"/>
