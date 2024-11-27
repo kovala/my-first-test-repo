@@ -3,6 +3,12 @@
 
 using json = nlohmann::json;
 
+namespace utils {
+  std::vector<int> genRandomArray(size_t size, int min, int max);
+  int rndNum(int min, int max);
+  std::string genRandomStr(size_t length, const std::string_view& chars = "abcdefghijklmnopqrstuvwxyz");
+}
+
 namespace u {
 //NB! requires gcc13
 #if defined(__APPLE__)
@@ -16,7 +22,6 @@ constexpr std::ostream& operator<<(std::ostream& o, const std::array<T, N>& arr)
   copy(arr.cbegin(), arr.cend(), std::ostream_iterator<T>(o, ","));
   return o;
 }
-
 
 template <typename Signature1, typename Signature2 = void> class arr_a;
 template <typename Signature1, typename Signature2 = void> class arr_b;
@@ -60,5 +65,3 @@ public:
   }
 };
 }
-
-

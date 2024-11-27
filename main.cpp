@@ -7,7 +7,7 @@
 #include <fmt/color.h>
 #include <fmt/ranges.h>
 
-#include <util.h>
+#include <utils.h>
 #include <algo.h>
 #include <random>
 
