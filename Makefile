@@ -3,7 +3,7 @@ ninja:=/home/azz/tools/clion/bin/ninja/linux/x64/ninja
 
 cmp-group-anagrams:
 	./cmake-build-release/algo-xp --benchmark:group-anagrams
-	#b=1 bun test ./arrays/has-duplicate.ts
+	b=1 bun test ./arrays/group-anagrams.ts
 cmp-binary-search:
 	./cmake-build-release/algo-xp --benchmark:binary-search
 	b=1 bun test ./arrays/binary-search.ts

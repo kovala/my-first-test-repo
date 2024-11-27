@@ -48,6 +48,11 @@ std::map<std::string, std::function<void()>> m = {
     auto result = arrays::binarySearch({1, 2, 3, 4, 5, 6, 7}, 3);
     u::jlog({{"result", result}});
   }},
+  {"group-anagrams", [] {
+    auto result = arrays::groupAnagramsOptimal({"act","pots","tops","cat","stop","hat"});
+    u::jlog({{"result", result}});
+  }},
+
   {"benchmark:binary-search", [] {
     mitata::runner runner;
 
@@ -94,16 +99,15 @@ std::map<std::string, std::function<void()>> m = {
   {"benchmark:group-anagrams", [] {
     mitata::runner runner;
 
-    int big = 1'000'000;
+    int big = 1'00'000;
     auto vec = utils::genRandomStrArray(big, 1, 100);
-    fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector<std::string>(vec.begin(), vec.begin() + std::min(size_t(100), vec.size())));
+    fmt::print(fg(fmt::color::yellow), "inputArray: {}\n",  std::vector(vec.begin(), vec.begin() + std::min(size_t(10), vec.size())));
 
-
-    // gFn = [&] { arrays::gr(vec); };
-    // runner.summary([&] {
-    //   runner.bench("has-duplicate", helperFn);
-    // });
-    // auto stats = runner.run();
+    gFn = [&] { arrays::groupAnagramsOptimal(vec); };
+    runner.summary([&] {
+      runner.bench("group-anagrams", helperFn);
+    });
+    auto stats = runner.run();
   }},
 };
 
