@@ -27,15 +27,11 @@ namespace u {
     return o;
   }
 
-  template <typename Signature1, typename Signature2 = void>
-  class arr_a;
-  template <typename Signature1, typename Signature2 = void>
-  class arr_b;
-  template <typename Signature1, typename Signature2 = void>
-  class fixarr;
+  template <typename Signature1, typename Signature2 = void> class arr_a;
+  template <typename Signature1, typename Signature2 = void> class arr_b;
+  template <typename Signature1, typename Signature2 = void> class fixarr;
 
-  template <class T, std::size_t N>
-  class arr_a<T[N]> {
+  template <class T, std::size_t N> class arr_a<T[N]> {
   public:
     T tmp[N];
     operator const T*() { return tmp; }
@@ -44,17 +40,13 @@ namespace u {
     std::size_t size() { return N; }
   };
 
-  template <typename T, std::size_t N>
-  class arr_b<T[N]> : public arr_a<T[N]> {
+  template <typename T, std::size_t N> class arr_b<T[N]> : public arr_a<T[N]> {
   public:
     arr_b() { memset(this->tmp, 0, sizeof(this->tmp)); }
   };
 
-  template <typename T, size_t N>
-  class fixarr<T[N]> : public arr_b<T[N]> {
-  };
-  template <size_t N>
-  class fixarr<char[N]> : public arr_b<char[N]> {
+  template <typename T, size_t N>  class fixarr<T[N]> : public arr_b<T[N]> {};
+  template <size_t N> class fixarr<char[N]> : public arr_b<char[N]> {
   public:
     fixarr() {
     }
@@ -66,8 +58,8 @@ namespace u {
       // _vsnprintf(m_tmp, size, formatstring, args);
     }
   };
-  template <size_t N>
-  class fixarr<wchar_t[N]> : public arr_b<wchar_t[N]> {
+
+  template <size_t N> class fixarr<wchar_t[N]> : public arr_b<wchar_t[N]> {
   public:
     fixarr() {
     }
