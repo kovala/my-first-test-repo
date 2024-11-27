@@ -57,6 +57,7 @@ Bun vs gcc13 compiled cpp code
 
 array.length=1000_000
 
+
 <img src="docs/cpp-binary-search.png" width="800"/> 
 
 for sorted array using bun 
@@ -65,8 +66,7 @@ for sorted array using bun
 
 ---
 
-![](docs/bun-vs-cpp-binary-search.png)
-
+<img src="docs/bun-vs-cpp-binary-search.png" width="800"/>
 
 ### Group Anagrams
 
@@ -75,4 +75,4 @@ arrat.length=100_000
 - cpp: 48 ms
 - bun: 82 ms
 
-![](docs/group-anagrams.png)
+<img src="docs/group-anagrams.png" width="800"/>
