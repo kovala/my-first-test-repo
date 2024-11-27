@@ -1,16 +1,18 @@
 cm:=/home/azz/tools/clion/bin/cmake/linux/x64/bin/cmake
 ninja:=/home/azz/tools/clion/bin/ninja/linux/x64/ninja
 
+cmp-group-anagrams:
+	./cmake-build-release/algo-xp --benchmark:group-anagrams
+	#b=1 bun test ./arrays/has-duplicate.ts
 cmp-binary-search:
-	./cmake-build-release/algo-xp --binary-search-benchmark
+	./cmake-build-release/algo-xp --benchmark:binary-search
 	b=1 bun test ./arrays/binary-search.ts
 cmp-two-sum:
-	./cmake-build-release/algo-xp --twosum-benchmark
+	./cmake-build-release/algo-xp --benchmark:twosum
 	b=1 bun test ./arrays/two-sum.ts
 cmp-has-duplicate:
-	./cmake-build-release/algo-xp --has-duplicate-benchmark
+	./cmake-build-release/algo-xp --benchmark:has-duplicate
 	b=1 bun test ./arrays/has-duplicate.ts
-
 
 deps:
 	ls -la
@@ -28,9 +30,9 @@ br:
 bd:
 	export CMAKE_BUILD_PARALLEL_LEVEL=10 && ${cm} --build cmake-build-debug -j 10
 rd:
-	./cmake-build-debug/algo-xp --arrays-benchmark
+	./cmake-build-debug/algo-xp --arrays
 rr:
-	./cmake-build-release/algo-xp --arrays-benchmark
+	./cmake-build-release/algo-xp --arrays
 clean:
 	rm -rf cmake-build-debug/*
 	rm -rf cmake-build-release/*

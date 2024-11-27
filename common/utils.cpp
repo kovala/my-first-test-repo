@@ -4,6 +4,12 @@
 #include <random>
 
 namespace utils {
+  int rndNum(int min, int max) {
+    static std::mt19937 gen(std::random_device{}());
+    std::uniform_int_distribution dist(min, max);
+    return dist(gen);;
+  }
+
   std::vector<int> genRandomArray(size_t size, int min, int max) {
     // mersenne twister random engine
     static std::mt19937 gen(std::random_device{}());
@@ -14,13 +20,7 @@ namespace utils {
     return result;
   }
 
-  int rndNum(int min, int max) {
-    static std::mt19937 gen(std::random_device{}());
-    std::uniform_int_distribution dist(min, max);
-    return dist(gen);;
-  }
-
-  std::vector<int> genRandomStrArray(size_t size, int min, int max) {
+  std::vector<int> genRandomIntArray(size_t size, int min, int max) {
     static std::mt19937 gen(std::random_device{}());
     std::uniform_int_distribution dist(min, max);
 
@@ -35,6 +35,12 @@ namespace utils {
 
     std::string result(length, '\0');
     std::ranges::generate(result, [&] { return chars[dist(gen)]; });
+    return result;
+  }
+
+  std::vector<std::string> genRandomStrArray(size_t length, int min, int max) {
+    std::vector<std::string> result(length);
+    std::ranges::generate(result, [&] { return genRandomStr(rndNum(min, max)); });
     return result;
   }
 

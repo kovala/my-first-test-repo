@@ -4,9 +4,13 @@
 using json = nlohmann::json;
 
 namespace utils {
-  std::vector<int> genRandomArray(size_t size, int min, int max);
-  int rndNum(int min, int max);
+	int rndNum(int min, int max);
+
+	std::vector<int> genRandomArray(size_t size, int min, int max);
+  std::vector<int> genRandomIntArray(size_t size, int min, int max);
+
   std::string genRandomStr(size_t length, const std::string_view& chars = "abcdefghijklmnopqrstuvwxyz");
+  std::vector<std::string> genRandomStrArray(size_t length, int min, int max);
 }
 
 namespace u {
