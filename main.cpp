@@ -50,6 +50,7 @@ std::map<std::string, std::function<void()>> m = {
   }},
   {"group-anagrams", [] {
     auto result = arrays::groupAnagramsOptimal({"act","pots","tops","cat","stop","hat"});
+
     u::jlog({{"result", result}});
   }},
 

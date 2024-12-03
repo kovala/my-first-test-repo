@@ -23,7 +23,6 @@ const findDuplicates = (arr: number[]) => {
   let result = []
 
   for (let n of nums) {
-
     // index of element where we store the marker
     const j = Math.abs(n) - 1;
     if (nums[j] < 0)
