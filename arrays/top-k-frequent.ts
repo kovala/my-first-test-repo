@@ -29,9 +29,11 @@ const topKFrequentBucketSort = (arr:number[], k:number) => {
   const count = arr.reduce((acc, i) => ((acc[i] = (acc[i] || 0) + 1), acc), {});
 
   const freq = Array.from({length: arr.length + 1}, () => []);
-  for (const n in count) {
-    freq[count[n]].push(parseInt(n));
+  for (const key in count) {
+    freq[count[key]].push(+key);
   }
+
+  console.log({count,  freq})
 
   const res = [];
   for (let i = freq.length - 1; i > 0; i--) {
@@ -49,6 +51,9 @@ test("topKFrequentBucketSort", () => {
 
   const result2 = topKFrequentBucketSort([7,7], 1)
   expect(result2).toEqual([7])
+
+  const result3 = topKFrequentBucketSort([3,3,3,3,3,3], 1)
+  expect(result3.sort()).toEqual([3])
 })
 
 test("benchmark: top k frequent elements", async () => {
