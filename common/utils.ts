@@ -1,7 +1,7 @@
-export class MinHeap {
-  heap: number[] = [];
+export class MinHeap<T> {
+  heap: T[] = [];
 
-  push(val: number) {
+  push(val: T) {
     this.heap.push(val);
     this.bubbleUp();
   }
